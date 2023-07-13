@@ -24,15 +24,28 @@ namespace Demo01Class
                 (new Salarie("M001", "22222", "B", "Emma", 30000)),
                 (new Salarie("M003", "33333", "C", "Georges", 26000))
             };
-            // Boucle Salarié
-            foreach (var itemSalarie in listSalarie)
-            {
-                itemSalarie.DisplaySalary();
-            }
 
-            // Montant total
-            new Salarie.DisplayTotalValues();
-            //Console.WriteLine("Le montant total des salaires des " + listSalarie.Count + " est de : ");
+            // Boucle Salarié
+            foreach (Salarie itemSalarie in listSalarie) itemSalarie.DisplaySalary();
+            // Montant total & nb total
+            Salarie.DisplayTotal();
+
+            // Changement de salaire de Chloé
+            Salarie salarieChloe = new Salarie();
+            foreach (Salarie itemSalarie in listSalarie)
+            {
+                Console.WriteLine(itemSalarie.Name);
+                if (itemSalarie.Name == "Chloé")
+                {
+                    salarieChloe = itemSalarie;
+                }
+            }
+            Salarie.SalaryChange(listSalarie.First(), 500000);
+            Salarie.DisplayTotal();
+
+            // Init 0
+            Salarie.Init0();
+            Salarie.DisplayTotal();
         }
     }
 }
