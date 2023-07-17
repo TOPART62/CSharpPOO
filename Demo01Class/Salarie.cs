@@ -24,15 +24,26 @@ namespace Demo01Class
         public string? Service { get => _service; set => _service = value; }
         public string? Category { get => _category; set => _category = value; }
         public string? Name { get => _name; set => _name = value; }
-        public double Salary { get => _salary; set => _salary = value; }
-        public static int NbSalaries { get => _nbSalaries; set => _nbSalaries = 0; }
-        public static double TotalSalary { get => _totalSalary; set => _totalSalary = 0; }
+        public double Salary 
+        { 
+            get => _salary;
+            set 
+            {
+                double dblsalary = _totalSalary - _salary;
+                _salary = value;
+                _totalSalary = dblsalary + value;
+            }
+        }
+        public static int NbSalaries { get => _nbSalaries; set => _nbSalaries = value; }
+        public static double TotalSalary {get => _totalSalary;set => _totalSalary = value;}
 
         // Constructors
         public Salarie()
         {
+            _salary = 0;
+            _nbSalaries++;
         }
-        public Salarie(string idUser, string service, string category, string name, double salary)
+        public Salarie(string idUser, string service, string category, string name, double salary) : this() 
         {
             _idUser = idUser;
             _service = service;
@@ -40,7 +51,6 @@ namespace Demo01Class
             _name = name;
             _salary = salary;
             _totalSalary = _totalSalary + salary;
-            _nbSalaries++;
         }
 
         // Methods
@@ -48,7 +58,6 @@ namespace Demo01Class
         {
             return ("Le salaire de " + Name + " est de " + Salary + ".");
         }
-
         public void DisplaySalary()
         {
             Console.WriteLine(this.ToString());
@@ -61,12 +70,6 @@ namespace Demo01Class
         {
             Salarie.NbSalaries = 0; 
             Salarie.TotalSalary = 0;   
-        }
-        public static void SalaryChange(Salarie itemSalarie, double newSalary)
-        {
-            Console.WriteLine("(Salarie.TotalSalary - itemSalarie.Salary + newSalary) = " + (Salarie.TotalSalary - itemSalarie.Salary + newSalary));
-            Salarie.TotalSalary = (Salarie.TotalSalary - itemSalarie.Salary + newSalary);
-            itemSalarie.Salary = newSalary;
         }
     }
 }

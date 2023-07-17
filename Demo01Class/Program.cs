@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using System.Reflection.Metadata;
+using System.Xml.Linq;
 
 namespace Demo01Class
 {
@@ -16,6 +17,7 @@ namespace Demo01Class
             objChaise3.Afficher();
             */
 
+            /*
             // exo 2 Salarié
             // public Salarie(string idUser, string service, string category, string name, double salary)
             List<Salarie> listSalarie = new List<Salarie>
@@ -40,12 +42,92 @@ namespace Demo01Class
                     salarieChloe = itemSalarie;
                 }
             }
-            Salarie.SalaryChange(listSalarie.First(), 500000);
+            
+            salarieChloe.Salary = 500000;
             Salarie.DisplayTotal();
 
             // Init 0
             Salarie.Init0();
             Salarie.DisplayTotal();
+            */
+
+            
+            // exo 3 Pendu
+            // Creation de l'instance pendu
+            Pendu itemPendu = new Pendu();  
+
+            // Saisie du nombre d'essais
+            itemPendu.FillValues();
+
+            // Recherche d'un mot aléatoire
+            itemPendu.SearchRandomWordGenerateMask();
+
+            // Init du mot à trouver
+            itemPendu.GenerateMask();
+
+            // Affichage du nombre d'essais
+            Console.WriteLine("Jeu du pendu généré !!! Nombre d'essais : " + itemPendu.NbEssais + " !");
+            Console.WriteLine("Le mot à trouver est : " + itemPendu.Masque);
+            Console.WriteLine($"Il vous reste {itemPendu.NbEssais} essais ...");
+            
+            Boolean boolSaisieOK = false;
+            Boolean boolWinner = false; 
+            do
+            {
+                Char chrDigit;
+                Console.Write($"Veuillez saisir une lettre : ");
+                boolSaisieOK = char.TryParse(Console.ReadLine(), out chrDigit);
+                while (!boolSaisieOK)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("\t\tErreur de saisie!!! Veuillez resaisir la lettre : ");
+                    Console.ResetColor();
+                    boolSaisieOK = char.TryParse(Console.ReadLine(), out chrDigit);
+                }
+                itemPendu.TestChar(chrDigit);
+
+                itemPendu.NbEssais--;
+
+                boolWinner = itemPendu.TestWin();
+
+            } while (!boolWinner);
+
+            /*
+            // exo 4 Citerne
+            //Saisie des citernes 
+            WaterTank watertank1 = new WaterTank(20, 20, 10);    
+            WaterTank watertank2 = new WaterTank(10, 10, 5);
+
+            Console.WriteLine($"Poids total de la citerne 1 : {watertank1.TotalWeightCalculation()}");
+            Console.WriteLine($"Poids total de la citerne 2 : {watertank2.TotalWeightCalculation()}");
+
+            Console.WriteLine("----------------------");
+            Console.WriteLine($"Quantité d'eau dans la citerne 1 : {watertank1.CompletedLevel}");
+            watertank1.AffichageCiterne();
+            Console.WriteLine($"Quantité d'eau dans la citerne 2 : {watertank2.CompletedLevel}");
+            watertank2.AffichageCiterne();
+            Console.WriteLine($"Quantité d'eau dans toutes les citernes : {WaterTank.TotalFillLevels}");
+            Console.WriteLine("----------------------");
+
+            int excessWater = watertank1.Fill(11);
+            Console.WriteLine($"Quantité d'eau dans la citerne 1 après ajout de 11 litres: {watertank1.CompletedLevel}/{watertank1.MaxCapacity}");
+            Console.WriteLine($"Excès d'eau récupéré : {excessWater}");
+
+            int waterTaken = watertank2.Empty(11);
+            Console.WriteLine($"Quantité d'eau dans la citerne 2 après tentative de retrait de 11 litres: {watertank2.CompletedLevel}/{watertank2.MaxCapacity}");
+            Console.WriteLine($"Quantité d'eau récupérée : {waterTaken}");
+            Console.WriteLine("----------------------");
+
+            Console.WriteLine($"Quantité d'eau dans la citerne 1 : {watertank1.CompletedLevel}");
+            watertank1.AffichageCiterne();
+            Console.WriteLine($"Quantité d'eau dans la citerne 2 : {watertank2.CompletedLevel}");
+            watertank2.AffichageCiterne();
+
+            Console.WriteLine($"Quantité d'eau dans toutes les citernes : {WaterTank.TotalFillLevels}");
+
+            Console.WriteLine($"Poids total de la citerne 1 : {watertank1.TotalWeightCalculation()}");
+            Console.WriteLine($"Poids total de la citerne 2 : {watertank2.TotalWeightCalculation()}");
+            */   
         }
     }
 }
