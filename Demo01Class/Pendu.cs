@@ -13,17 +13,15 @@ namespace Demo01Class
         private string? _masque;
         private int _nbEssais;
         private string? _motATrouver;
-        
+        private int _nbEssaisMax;
+
         // Properties 
         public string Masque { get => _masque!; set => _masque = value; }
         public int NbEssais { get => _nbEssais; set => _nbEssais = value; }
         public string MotATrouver { get => _motATrouver!; set => _motATrouver = value; }
+        public int NbEssaisMax { get => _nbEssaisMax; set => _nbEssaisMax = value; }
 
         // Constructors
-        public Pendu()
-        {
-        }
-
         // Methods
         public void TestChar(char chrDigit)
         {
@@ -31,35 +29,21 @@ namespace Demo01Class
             foreach (Char chrI in this.MotATrouver)
             {
                 if (chrDigit.ToString().ToLower() == chrI.ToString().ToLower())
-                    this.Masque = this.Masque.Substring(0, IntI) + chrI.ToString().ToLower() + this.Masque.Substring(IntI + 1); ;
+                    this.Masque = this.Masque.Substring(0, IntI) + chrI.ToString().ToLower() + this.Masque.Substring(IntI + 1);
                 IntI++;
             }
         }
         public bool TestWin()
         {
-            if (this.MotATrouver.ToLower() == this.Masque.ToLower())
-            {
-                Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine("\t\tCONGRATULATIONS !!! ");
-                Console.ResetColor();
-                return true;
-            }
-            else
-            {
-                //AffichagePendu(this.NbEssais, int nbEssaiMax)
-                Console.WriteLine("Le mot à trouver est : " + this.Masque);
-                Console.WriteLine($"Il vous reste {this.NbEssais} essais ...");
-                return false;
-            }
+            return (this.MotATrouver.ToLower() == this.Masque.ToLower());
         }
-
-        public void FillValues()
+        public void FillValuesForStarting()
         {
             Console.WriteLine(" === Paramètres de partie === ");
             String strSaisie = "";
             do
             {
-                Console.WriteLine("Voulez-vous un nombre d'essais spécifique (10 par défaut) ? Y/N ?");
+                Console.Write("Voulez-vous un nombre d'essais spécifique (10 par défaut) ? Y/N ?   ");
                 strSaisie = Console.ReadLine()!;
                 strSaisie = strSaisie.ToUpper();    
                 if ((strSaisie != "Y") && (strSaisie != "N"))
@@ -77,7 +61,7 @@ namespace Demo01Class
                 Boolean boolSaisieOK = false;
                 do
                 {
-                    Console.WriteLine("Combien d'essais voulez-vous");
+                    Console.Write("Combien d'essais voulez-vous ?  ");
                     boolSaisieOK = int.TryParse(Console.ReadLine(), out intNbEssais);
                     if (!boolSaisieOK)
                     {
@@ -89,6 +73,7 @@ namespace Demo01Class
                 } while (!boolSaisieOK);
             }
             this.NbEssais = intNbEssais;
+            this.NbEssaisMax = intNbEssais;
         }
         public void SearchRandomWordGenerateMask()
         {
@@ -171,7 +156,7 @@ namespace Demo01Class
             int noPendu = noEssai == 0 ? 0 : (noEssai * 8 / nbEssaiMax);
             for (int i = 0; i < 7; i++)
             {
-                Console.WriteLine(penduAscii[noPendu, i]);
+                Console.WriteLine(penduAscii[(8-noPendu), i]);
             }
         }
     }

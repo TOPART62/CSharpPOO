@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo01Class", "Demo01Class\Demo01Class.csproj", "{7A074E23-9B80-4381-BD5B-E87BE1EA4FEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo01Class", "Demo01Class\Demo01Class.csproj", "{7A074E23-9B80-4381-BD5B-E87BE1EA4FEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo03Polymorphisme", "Demo03Polymorphisme\Demo03Polymorphisme.csproj", "{5B71F830-1A37-486D-A997-9BF52BB869A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExosPOO", "ExosPOO\ExosPOO.csproj", "{531CD395-DF1E-43BC-AF94-797737112797}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{7A074E23-9B80-4381-BD5B-E87BE1EA4FEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A074E23-9B80-4381-BD5B-E87BE1EA4FEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A074E23-9B80-4381-BD5B-E87BE1EA4FEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B71F830-1A37-486D-A997-9BF52BB869A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B71F830-1A37-486D-A997-9BF52BB869A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B71F830-1A37-486D-A997-9BF52BB869A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B71F830-1A37-486D-A997-9BF52BB869A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{531CD395-DF1E-43BC-AF94-797737112797}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{531CD395-DF1E-43BC-AF94-797737112797}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{531CD395-DF1E-43BC-AF94-797737112797}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{531CD395-DF1E-43BC-AF94-797737112797}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

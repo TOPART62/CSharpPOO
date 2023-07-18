@@ -57,7 +57,7 @@ namespace Demo01Class
             Pendu itemPendu = new Pendu();  
 
             // Saisie du nombre d'essais
-            itemPendu.FillValues();
+            itemPendu.FillValuesForStarting();
 
             // Recherche d'un mot aléatoire
             itemPendu.SearchRandomWordGenerateMask();
@@ -70,27 +70,46 @@ namespace Demo01Class
             Console.WriteLine("Le mot à trouver est : " + itemPendu.Masque);
             Console.WriteLine($"Il vous reste {itemPendu.NbEssais} essais ...");
             
-            Boolean boolSaisieOK = false;
             Boolean boolWinner = false; 
             do
             {
-                Char chrDigit;
-                Console.Write($"Veuillez saisir une lettre : ");
-                boolSaisieOK = char.TryParse(Console.ReadLine(), out chrDigit);
-                while (!boolSaisieOK)
+                if (itemPendu.NbEssais == 0)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write("\t\tErreur de saisie!!! Veuillez resaisir la lettre : ");
+                    Console.WriteLine("\n\t\tYOU'VE LOST !!! ");
                     Console.ResetColor();
-                    boolSaisieOK = char.TryParse(Console.ReadLine(), out chrDigit);
                 }
-                itemPendu.TestChar(chrDigit);
+                else
+                {
+                    Char chrDigit;
+                    Console.Write($"Veuillez saisir une lettre : ");
+                    Boolean boolSaisieOK = char.TryParse(Console.ReadLine(), out chrDigit);
+                    while (!boolSaisieOK)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write("\t\tErreur de saisie!!! Veuillez resaisir la lettre : ");
+                        Console.ResetColor();
+                        boolSaisieOK = char.TryParse(Console.ReadLine(), out chrDigit);
+                    }
+                    itemPendu.TestChar(chrDigit);
 
-                itemPendu.NbEssais--;
+                    boolWinner = itemPendu.TestWin();
 
-                boolWinner = itemPendu.TestWin();
-
-            } while (!boolWinner);
+                    if (!boolWinner)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.WriteLine("\n\t\tCONGRATULATIONS !!! ");
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        itemPendu.NbEssais--;
+                        Console.WriteLine("Le mot à trouver est : " + itemPendu.Masque);
+                        Console.WriteLine($"Il vous reste {itemPendu.NbEssais} essais ...");
+                        Pendu.AffichagePendu(itemPendu.NbEssais, itemPendu.NbEssaisMax);
+                    }
+                }
+            } while (!boolWinner && (itemPendu.NbEssais >= 0));
 
             /*
             // exo 4 Citerne
