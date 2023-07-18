@@ -37,23 +37,5 @@ namespace ExosPOO
                 return (intChoixMenu, chrChoixType);
             }
         }
-
-        public static (string nom, string service, string categorie, decimal salaire) FillEmploye()
-        {
-            Console.Write("Veuillez saisir le nom : ");
-            string strNom = Console.ReadLine()!;
-
-            Console.Write("Veuillez saisir le service : ");
-            string strService = Console.ReadLine()!;
-
-            Console.Write("Veuillez saisir la catégorie : ");
-            string strCategorie = Console.ReadLine()!;
-
-            Console.Write("Veuillez saisir le salaire : ");
-            decimal dcmSalaire;
-            if (!decimal.TryParse(Console.ReadLine(), out dcmSalaire)) dcmSalaire = 0;
-
-            return (strNom, strService, strCategorie, dcmSalaire);  
-        }
     }
 }
