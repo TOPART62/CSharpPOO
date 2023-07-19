@@ -10,26 +10,16 @@ namespace ExosPOO
     {
         // Attributs / Propriétés
         private decimal _salaire;
-        private decimal __commissionPourcentage;
+        private decimal _commissionPourcentage;
         private decimal _chiffreDAffaire;
-        public new decimal Salaire
-        {
-            get => _salaire;
-            set 
-            {
-                TotalSalaires -= _salaire;
-                _salaire = value;
-                TotalSalaires += _salaire;
-            }
-        }
         public decimal CommissionPourcentage 
         { 
-            get => __commissionPourcentage; 
+            get => _commissionPourcentage; 
             set
             {
-                TotalSalaires -= (__commissionPourcentage* _chiffreDAffaire/100);
-                _salaire = value;
-                TotalSalaires += (__commissionPourcentage * _chiffreDAffaire / 100);
+                TotalSalaires -= (_commissionPourcentage* _chiffreDAffaire/100);
+                _commissionPourcentage = value;
+                TotalSalaires += (_commissionPourcentage * _chiffreDAffaire / 100);
             }
         }
         public decimal ChiffreDAffaire
@@ -37,9 +27,9 @@ namespace ExosPOO
             get => _chiffreDAffaire;
             set
             {
-                TotalSalaires -= (__commissionPourcentage * _chiffreDAffaire / 100);
+                TotalSalaires -= (_commissionPourcentage * _chiffreDAffaire / 100);
                 _chiffreDAffaire = value;
-                TotalSalaires += (__commissionPourcentage * _chiffreDAffaire / 100);
+                TotalSalaires += (_commissionPourcentage * _chiffreDAffaire / 100);
             }
         }
 
@@ -66,8 +56,32 @@ namespace ExosPOO
         }
         public override void AfficherSalaire()
         {
-            base.AfficherSalaire();
             Console.WriteLine($"Le salaire réel de {Nom} est de {(Salaire + (CommissionPourcentage * ChiffreDAffaire / 100))} euros");
+        }
+        public override void FillEmploye()
+        {
+            // Saisie des paramètres "Salarié"
+            base.FillEmploye();
+
+            // Saisie des paramètres "Commercial" 
+            Console.Write("Veuillez saisir le pourcentage de commission en pourcentage : ");
+            decimal dcmTmp;
+            while ((!Decimal.TryParse(Console.ReadLine(), out dcmTmp)) || (dcmTmp <= 0) || (dcmTmp > 100))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("\t\tSaisie invalide ! Réésayer : ");
+                Console.ResetColor();
+            }
+            this.CommissionPourcentage = dcmTmp;
+
+            Console.Write("Veuillez saisir le chiffre d'affaire : ");
+            while ((!Decimal.TryParse(Console.ReadLine(), out dcmTmp)) || (dcmTmp < 0))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("\t\tSaisie invalide ! Réésayer : ");
+                Console.ResetColor();
+            }
+            this.ChiffreDAffaire = dcmTmp;
         }
     }
 }

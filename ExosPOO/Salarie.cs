@@ -68,40 +68,42 @@ namespace ExosPOO
         }
         public void AjouterEmploye(List<Salarie> lstSalarie)
         {
+            Console.ForegroundColor = ConsoleColor.Green;
             lstSalarie.Add(this);
-            Console.WriteLine($"L'employé : {Nom} du service {Service} a été ajouté à l'entreprise.");
+            Console.WriteLine($"\nL'employé {Nom} du service {Service} a été ajouté à l'entreprise.");
+            Console.ResetColor();
         }
         public virtual void AfficherSalaire()
         {
             Console.WriteLine($"Le salaire de {Nom} est de {Salaire} euros");
         }
-        public void RechercherEmploye(Salarie item, List<Salarie> lstSalarie)
+        public Salarie RechercherEmploye(String name, List<Salarie> lstSalarie)
         {
-            foreach (Salarie itemSalarie in lstSalarie)
-            {
-                if (itemSalarie.Nom.Contains(this.Nom))
-                {
-                    item = itemSalarie;
-                    break;
-                }
-            }
-            Console.WriteLine($"Le salaire de {Nom} est de {Salaire} euros");
+            foreach (Salarie item in lstSalarie)
+                if (item.Nom.Contains(name))
+                    return item;
+            return null;
         }
-        public void FillEmploye()
+        public virtual void FillEmploye()
         {
             Console.Write("Veuillez saisir le nom : ");
-            this.Nom = Console.ReadLine()!;
+            this.Nom = Console.ReadLine()!.ToUpper();
 
             Console.Write("Veuillez saisir le service : ");
-            this.Service = Console.ReadLine()!;
+            this.Service = Console.ReadLine()!.ToUpper();
 
             Console.Write("Veuillez saisir la catégorie : ");
-            this.Categorie = Console.ReadLine()!;
+            this.Categorie = Console.ReadLine()!.ToUpper();
 
             Console.Write("Veuillez saisir le salaire : ");
-            decimal dcmSalaire;
-            if (!decimal.TryParse(Console.ReadLine(), out dcmSalaire)) this.Salaire = 0;
-            else this.Salaire = dcmSalaire;
+            decimal dcmTmp;
+            while ((!Decimal.TryParse(Console.ReadLine(), out dcmTmp)) || (dcmTmp < 0))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("\t\tSaisie invalide ! Réésayer : ");
+                Console.ResetColor();
+            }
+            this.Salaire = dcmTmp;
         }
     }
 }
