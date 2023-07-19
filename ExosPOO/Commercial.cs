@@ -9,7 +9,6 @@ namespace ExosPOO
     internal class Commercial : Salarie
     {
         // Attributs / Propriétés
-        private decimal _salaire;
         private decimal _commissionPourcentage;
         private decimal _chiffreDAffaire;
         public decimal CommissionPourcentage 

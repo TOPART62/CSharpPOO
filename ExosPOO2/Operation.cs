@@ -12,7 +12,7 @@ namespace ExosPOO2
         private decimal _amount;    
         private CompteBancaire? _compteBancaire;
         public int Amount { get; set; } = 0;
-        public CompteBancaire? CompteBancaire { get; set; };
+        public CompteBancaire? CompteBancaire { get; set; }
 
         //Méthodes
         public override string ToString()

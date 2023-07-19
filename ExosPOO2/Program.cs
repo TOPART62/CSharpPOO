@@ -13,7 +13,7 @@ namespace ExosPOO2
             };
             List<CompteBancaire> LstCopmtesBancaires = new List<CompteBancaire>()
             {
-                new CompteBancaire(),
+                //new CompteBancaire(),
             };
 
             // Sortie de la boucle quand Saisie du menu Quitter
@@ -38,22 +38,11 @@ namespace ExosPOO2
 
                     case 2: // Créer un compte bancaire
                         Console.WriteLine("---------------------------------------------------------------------------------------------------------------------");
-                        CompteBancaire cptBancaire = new CompteBancaire();
+                        //CompteBancaire cptBancaire = new CompteBancaire();
                         Console.WriteLine("---------------------------------------------------------------------------------------------------------------------");
                         break;
 
                     case 3: // Effectuer un dépot
-                        String strName = IHM.StartRecherche();
-                        Salarie employeRecherche = new Salarie();
-                        employeRecherche = employeRecherche.RechercherEmploye(strName, LstSalarie);
-                        if (employeRecherche is null)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("\nLe salarié recherché n'existe pas !!! ");
-                            Console.ResetColor();
-                        }
-                        else
-                            employeRecherche.AfficherEmploye();
                         break;
 
                     case 4: // Effectuer un retrait
