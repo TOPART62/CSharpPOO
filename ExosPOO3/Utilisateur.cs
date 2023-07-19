@@ -27,24 +27,7 @@ namespace ExosPOO3
         }
 
         // Methodes
-        public virtual void FillUtilisateur()
-        {
-            Console.Write("Veuillez saisir le prénom : ");
-            this.Prenom = Console.ReadLine()!.ToUpper();
-
-            Console.Write("Veuillez saisir le nom : ");
-            this.Nom = Console.ReadLine()!.ToUpper();
-
-            Console.Write("Veuillez saisir l'age : ");
-            int intTmp;
-            while ((!int.TryParse(Console.ReadLine(), out intTmp)) || (intTmp < 0) || (intTmp > 120)) 
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write("\t\tSaisie invalide ! Réésayer : ");
-                Console.ResetColor();
-            }
-            this.Age = intTmp;
-
+ 
         public virtual void AjouterUnUtilisateur()
         {
             Console.ForegroundColor = ConsoleColor.Green;

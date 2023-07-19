@@ -23,12 +23,15 @@ namespace ExosPOO3
         {
 
         }
-        public void AjouterUnAbonne()
+        
+        public override void AjouterUnUtilisateur()
         {
-            Console.ForegroundColor = ConsoleColor.Green;
-            lstSalarie.Add(this);
-            Console.WriteLine($"\nL'employé {Nom} du service {Service} a été ajouté à l'entreprise.");
-            Console.ResetColor();
+            base.AjouterUnUtilisateur();    
+            Abonne newAbonne = new Abonne();
+            newCommercial.FillEmploye();
+            newCommercial.AjouterEmploye(LstSalarie);
+            newCommercial.AfficherEmploye();
+
         }
     }
 }

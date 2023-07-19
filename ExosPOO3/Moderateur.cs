@@ -16,5 +16,18 @@ namespace ExosPOO3
         public void SupprimerNouvelle()
         {
         }
+        public void BannirUnAbonne()
+        {
+        }
+        public void AjouterUnAbonner()
+        {
+        }
+        public void ListesAbonnes()
+        {
+        }
+        public void ListerNouvelles()
+        {
+        }
+
     }
 }

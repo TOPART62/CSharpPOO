@@ -37,6 +37,7 @@ namespace ExosPOO3
                     case 2: // Ajouter un abonné
                         string strPrenom, strNom;
                         int intAge;
+
                         (strPrenom, strNom, intAge) = IHM.FillUtilisateur();
                         break;
 
