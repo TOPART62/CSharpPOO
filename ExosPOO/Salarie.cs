@@ -40,7 +40,7 @@ namespace ExosPOO
         public static decimal TotalSalaires { get; set; } = 0;
         public static int MatriculeLastIndex { get; set; } = 0; 
 
-
+        //Constructeurs
         public Salarie()
         {
             Matricule = MatriculeLastIndex + 1;
@@ -56,16 +56,17 @@ namespace ExosPOO
             Salaire = salaire;
         }
 
+        // Méthodes
         public static void RemiseAZero()
         {
             NombreSalaries = 0;
             TotalSalaires = 0;
         }
-
         public override string ToString() 
         { 
             return ("Le salarié : " + Nom);
         }
+
         public void AjouterEmploye(List<Salarie> lstSalarie)
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -76,6 +77,10 @@ namespace ExosPOO
         public virtual void AfficherSalaire()
         {
             Console.WriteLine($"Le salaire de {Nom} est de {Salaire} euros");
+        }
+        public virtual void AfficherEmploye()
+        {
+            Console.WriteLine($"\tEmployé ==> Matricule : {this.Matricule}, Nom = {this.Nom}, Service : {this.Service}, Catégorie : {this.Categorie}, Salaire : {this.Salaire}");
         }
         public Salarie RechercherEmploye(String name, List<Salarie> lstSalarie)
         {

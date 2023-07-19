@@ -71,5 +71,16 @@ namespace ExosPOO
                 return userName;
             }
         }
+        public static string StartCreationEmploye()
+        {
+            while (true)
+            {
+                Console.Write("\nQuel est le nom du salarié que vous recherchez ? ");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                string userName = Console.ReadLine()!.ToUpper();
+                Console.ResetColor();
+                return userName;
+            }
+        }
     }
 }

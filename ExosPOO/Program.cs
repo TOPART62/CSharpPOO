@@ -9,10 +9,10 @@ namespace ExosPOO
             //Init Liste de Salariés
             List<Salarie> LstSalarie = new List<Salarie>()
             {
-                new Salarie("ARTHUR", "00000", "A", 1000),
-                new Salarie("CHLOE", "11111", "B", 1200),
-                new Salarie("BERNARD", "22222", "C", 2000),
-                new Commercial("ISABELLE", "33333", "C", 1800, 5, 9500)
+                new Salarie("ARTHUR", "00000", "A", 100000),
+                new Salarie("CHLOE", "11111", "B", 120000),
+                new Salarie("BERNARD", "22222", "C", 200000),
+                new Commercial("ISABELLE", "33333", "C", 180000, 5, 950000)
             };
 
             // Sortie de la boucle quand Saisie du menu Quitter
@@ -28,17 +28,19 @@ namespace ExosPOO
 
                     case 1: // Ajouter un employé
                         char chrUserType = IHM.StartType();
-                        if (chrUserType == 'S')
+                        if (chrUserType == 'S') 
                         {
                             Salarie newSalarie = new Salarie();
                             newSalarie.FillEmploye();
                             newSalarie.AjouterEmploye(LstSalarie);
+                            newSalarie.AfficherEmploye();
                         }
                         else if (chrUserType == 'C')
                         {
                             Commercial newCommercial = new Commercial();
                             newCommercial.FillEmploye();
                             newCommercial.AjouterEmploye(LstSalarie);
+                            newCommercial.AfficherEmploye();
                         }
                         else
                         {
@@ -50,7 +52,12 @@ namespace ExosPOO
 
                     case 2: // Afficher le salaire de tous les employés
                         foreach (Salarie employe in LstSalarie)
+                        {
+                            Console.WriteLine("---------------------------------------------------------------------------------------------------------------------");
                             employe.AfficherSalaire();
+                            employe.AfficherEmploye();
+                            Console.WriteLine("---------------------------------------------------------------------------------------------------------------------");
+                        }
                         break;
 
                     case 3: // Rechercher un employé
@@ -64,7 +71,7 @@ namespace ExosPOO
                             Console.ResetColor();
                         }
                         else
-                            employeRecherche.AfficherSalaire();
+                            employeRecherche.AfficherEmploye();
                         break;
 
                     default:

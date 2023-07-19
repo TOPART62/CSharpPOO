@@ -58,6 +58,11 @@ namespace ExosPOO
         {
             Console.WriteLine($"Le salaire réel de {Nom} est de {(Salaire + (CommissionPourcentage * ChiffreDAffaire / 100))} euros");
         }
+        public override void AfficherEmploye()
+        {
+            base.AfficherEmploye(); 
+            Console.WriteLine($"\t\tCommission : {this.CommissionPourcentage}, Chiffre d'affaire : {this.ChiffreDAffaire}");
+        }
         public override void FillEmploye()
         {
             // Saisie des paramètres "Salarié"
