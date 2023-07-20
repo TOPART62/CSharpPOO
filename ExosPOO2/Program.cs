@@ -1,4 +1,6 @@
 ﻿using ExosPOO;
+using System.Numerics;
+using System.Reflection.Metadata;
 
 namespace ExosPOO2
 {
@@ -17,11 +19,11 @@ namespace ExosPOO2
             };
 
             // Sortie de la boucle quand Saisie du menu Quitter
-            int intUserChoice = 0;
+            int intUserChoice1 = 0;
             do
             {
-                intUserChoice = IHM.StartMenu();
-                switch (intUserChoice)
+                intUserChoice1 = IHM.StartMenu();
+                switch (intUserChoice1)
                 {
                     case 0: // Quitter
                         Environment.Exit(0);
@@ -38,7 +40,45 @@ namespace ExosPOO2
 
                     case 2: // Créer un compte bancaire
                         Console.WriteLine("---------------------------------------------------------------------------------------------------------------------");
-                        //CompteBancaire cptBancaire = new CompteBancaire();
+                        int intUserChoice2;
+                        do
+                        {
+                            intUserChoice2 = IHM.StartCreationCompte();
+                            switch (intUserChoice2)
+                            {
+                                case 0: // Annuler la création de compte
+                                    break;
+                                case 1: //Créer un compte courant => P (Compte Payant), E (Compte Epargne) ou C (Compte Courant)
+                                    char chrChoixTypeCompte = IHM.StartTypeCompteBancaire();
+                                    if (chrChoixTypeCompte == 'P')
+                                    {
+                                        ComptePayant compte= new ComptePayant();
+                                        compte.FillCompteBancaire();
+                                    }
+                                    else if (chrChoixTypeCompte == 'E')
+                                    {
+                                        CompteEpargne compte = new CompteEpargne();
+                                        compte.FillCompteBancaire();
+                                    }
+                                    else if (chrChoixTypeCompte == 'C')
+                                    {
+                                        CompteCourant compte = new CompteCourant();
+                                        compte.FillCompteBancaire();
+                                    }
+                                    break;
+
+                                case 2: //Créer un compte épargne
+                                    break;
+
+                                case 3: ////Créer un compte payant
+                                    break;
+
+                                default:
+                                    Console.Clear();
+                                    break
+;
+                            }
+                        } while (intUserChoice2 != 0);
                         Console.WriteLine("---------------------------------------------------------------------------------------------------------------------");
                         break;
 
@@ -55,7 +95,7 @@ namespace ExosPOO2
                         Console.Clear();
                         break;
                 }
-            } while (intUserChoice != 0);
+            } while (intUserChoice1 != 0);
         }
     }
 }

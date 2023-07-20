@@ -8,5 +8,9 @@ namespace ExosPOO2
 {
     internal class CompteCourant : CompteBancaire   
     {
+        public virtual void CréerUnCompteBancaire()
+        {
+            base.CréerUnCompteBancaire();   
+        }
     }
 }

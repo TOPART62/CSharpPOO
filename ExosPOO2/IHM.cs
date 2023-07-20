@@ -77,7 +77,7 @@ namespace ExosPOO
             while (true)
             {
                 Console.WriteLine("Quel type de compte bancaire voulez-vous ?  ");
-                Console.Write("\tP (pour Compte Payant), E (pour Compte Epargne) ou C (pour Compte Coutant) ?  ");
+                Console.Write("\tP (pour Compte Payant), E (pour Compte Epargne) ou C (pour Compte Courant) ?  ");
                 Console.ForegroundColor = ConsoleColor.Blue;
                 string strUserChoice = Console.ReadLine().ToUpper();
                 Console.ResetColor();
@@ -103,15 +103,23 @@ namespace ExosPOO
                 return userName;
             }
         }
-        public static string StartCreationEmploye()
+        public static char StartCreationOperation()
         {
             while (true)
             {
-                Console.Write("\nQuel est le nom du salarié que vous recherchez ? ");
+                Console.Write("Voulez-vous créer des opérations ?  Y ou N ?  ");
                 Console.ForegroundColor = ConsoleColor.Blue;
-                string userName = Console.ReadLine()!.ToUpper();
+                string strUserChoice = Console.ReadLine()!.ToUpper();
                 Console.ResetColor();
-                return userName;
+                char chrChoixType;
+                while (!char.TryParse(strUserChoice, out chrChoixType) && chrChoixType != 'Y' && chrChoixType != 'N')
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("\t\tSaisie invalide ! Réésayer : ");
+                    strUserChoice = Console.ReadLine()!;
+                    Console.ResetColor();
+                }
+                return Char.ToUpper(chrChoixType);
             }
         }
     }
