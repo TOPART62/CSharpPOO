@@ -12,17 +12,16 @@ namespace ExosPOO2
         // Attributs & Propriétés
         private decimal _solde;
         private string? _client;
-        private List<Operation>? _listOperations;
         
         public decimal Solde{ get; set; } = 0;
         public string Client { get; set; } = "Client par défaut";
-        public List<Operation>? ListOperations{ get; set; }
-
+        
         //Methods
         public void AfficherCompteBancaire()
         {
             Console.WriteLine($"\tEmployé ==> Client : {this.Client}, Solde = {this.Solde}");
             Console.WriteLine($"\t\tListes des operations : ");
+            List<Operation> lstOperations = new List<Operation>();  
             foreach ( Operation op in ListOperations) 
             {
                 if (ListOperations is null)
@@ -34,11 +33,13 @@ namespace ExosPOO2
 
         public void FillCompteBancaire()
         {
-            Console.Write("Veuillez saisir le nom du client: ");
+            //Saisie du client
+            Console.Write("Veuillez saisir le nom du client : ");
             this.Client = Console.ReadLine()!.ToUpper();
 
+            //Saisie du solde du client
             Console.Write("Veuillez saisir le solde du client : ");
-            decimal dcmTmp;
+            decimal dcmTmp = 0;
             while ((!Decimal.TryParse(Console.ReadLine(), out dcmTmp)) || (dcmTmp < 0))
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -46,8 +47,19 @@ namespace ExosPOO2
                 Console.ResetColor();
             }
             this.Solde = dcmTmp;
+
+            //Saisie des operations
+            Console.Write("Veuillez saisir le nombre d'operation à ajouter au compte bancaire : ");
+            int intTmp = 0;
+            while ((!int.TryParse(Console.ReadLine(), out intTmp)) || (intTmp < 0) || (intTmp > 10))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("\t\tSaisie invalide ! Réésayer : ");
+                Console.ResetColor();
+            }
+            
         }
-        
+
         public virtual void CréerUnCompteBancaire()
         {
            

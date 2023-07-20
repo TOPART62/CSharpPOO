@@ -42,17 +42,13 @@ namespace ExosPOO
         }
         public static int StartCreationCompte()
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("\n=== Menu principal ===\n");
-            Console.ResetColor();
-
             while (true)
             {
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("\t1. Créer un compte courant");
-                Console.WriteLine("\t2. Créer un compte épargne");
-                Console.WriteLine("\t3. Créer un compte payant");
-                Console.WriteLine("\t0. Annuler la création de compte\n");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("\t\t\t1. Créer un compte courant");
+                Console.WriteLine("\t\t\t2. Créer un compte épargne");
+                Console.WriteLine("\t\t\t3. Créer un compte payant");
+                Console.WriteLine("\t\t\t0. Annuler la création de compte\n");
                 Console.ResetColor();
 
                 Console.Write("\nEntrez votre choix : ");
@@ -69,29 +65,7 @@ namespace ExosPOO
                 return (intChoixMenu);
             }
         }
-        public static char StartTypeCompteBancaire()
-        {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("\n === Création de compte bancaire ===\n");
-            Console.ResetColor();
-            while (true)
-            {
-                Console.WriteLine("Quel type de compte bancaire voulez-vous ?  ");
-                Console.Write("\tP (pour Compte Payant), E (pour Compte Epargne) ou C (pour Compte Courant) ?  ");
-                Console.ForegroundColor = ConsoleColor.Blue;
-                string strUserChoice = Console.ReadLine().ToUpper();
-                Console.ResetColor();
-                char chrChoixType;
-                while (!char.TryParse(strUserChoice, out chrChoixType) && chrChoixType != 'P' && chrChoixType != 'E' && chrChoixType != 'C')
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write("\t\tSaisie invalide ! Réésayer : ");
-                    strUserChoice = Console.ReadLine()!;
-                    Console.ResetColor();
-                }
-                return Char.ToUpper(chrChoixType);
-            }
-        }
+        
         public static string StartRecherche()
         {
             while (true)

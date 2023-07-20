@@ -32,14 +32,11 @@ namespace ExosPOO2
                     case 1: // Lister les comptes bancaires
                         foreach (CompteBancaire cptBancaire in LstCopmtesBancaires)
                         {
-                            Console.WriteLine("---------------------------------------------------------------------------------------------------------------------");
                             cptBancaire.AfficherCompteBancaire();
-                            Console.WriteLine("---------------------------------------------------------------------------------------------------------------------");
                         }
                         break;
 
                     case 2: // Créer un compte bancaire
-                        Console.WriteLine("---------------------------------------------------------------------------------------------------------------------");
                         int intUserChoice2;
                         do
                         {
@@ -48,29 +45,20 @@ namespace ExosPOO2
                             {
                                 case 0: // Annuler la création de compte
                                     break;
-                                case 1: //Créer un compte courant => P (Compte Payant), E (Compte Epargne) ou C (Compte Courant)
-                                    char chrChoixTypeCompte = IHM.StartTypeCompteBancaire();
-                                    if (chrChoixTypeCompte == 'P')
-                                    {
-                                        ComptePayant compte= new ComptePayant();
-                                        compte.FillCompteBancaire();
-                                    }
-                                    else if (chrChoixTypeCompte == 'E')
-                                    {
-                                        CompteEpargne compte = new CompteEpargne();
-                                        compte.FillCompteBancaire();
-                                    }
-                                    else if (chrChoixTypeCompte == 'C')
-                                    {
-                                        CompteCourant compte = new CompteCourant();
-                                        compte.FillCompteBancaire();
-                                    }
+
+                                case 1: //Créer un compte courant 
+                                    CompteCourant cptCourant = new CompteCourant();
+                                    cptCourant.FillCompteBancaire();
                                     break;
 
                                 case 2: //Créer un compte épargne
+                                    CompteEpargne cptEpargne = new CompteEpargne();
+                                    cptEpargne.FillCompteBancaire();
                                     break;
 
                                 case 3: ////Créer un compte payant
+                                    ComptePayant cptPayant = new ComptePayant();
+                                    cptPayant.FillCompteBancaire();
                                     break;
 
                                 default:
@@ -79,7 +67,7 @@ namespace ExosPOO2
 ;
                             }
                         } while (intUserChoice2 != 0);
-                        Console.WriteLine("---------------------------------------------------------------------------------------------------------------------");
+                        
                         break;
 
                     case 3: // Effectuer un dépot
