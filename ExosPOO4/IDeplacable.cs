@@ -8,5 +8,6 @@ namespace ExosPOO4
 {
     internal interface IDeplacable
     {
+        public void Deplacement(double x, double y);
     }
 }

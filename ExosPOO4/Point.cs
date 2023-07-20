@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExosPOO4
 {
-    internal class Point
+    internal class Point : IDeplacable
     {
         //attributs & Propriétés
         public double X { get; set; }    

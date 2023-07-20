@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExosPOO4
 {
-    internal abstract class Figure
+    internal abstract class Figure : IDeplacable
     {
         public Point A { get; private set; }
 
