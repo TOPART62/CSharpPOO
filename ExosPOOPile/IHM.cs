@@ -38,5 +38,33 @@ namespace ExosPOOPile
                 return (intChoixMenu);
             }
         }
+        public static string SaisirStringPile()
+        {
+            Console.Write("\nVeuillez saisir votre commentaire : ");
+            string strChoice = Console.ReadLine()!;
+            if ((strChoice == null) || (strChoice.Length == 0))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("\t\tSaisie invalide ! Réésayer : ");
+                strChoice = Console.ReadLine()!;
+                Console.ResetColor();
+            }
+
+            return strChoice;
+        }
+        public static int SaisirPositionPile()
+        {
+            Console.Write("\nVeuillez saisir la position désirée : ");
+            int intChoix = 0;
+            string strChoice = Console.ReadLine()!;
+            while (!int.TryParse(strChoice, out intChoix) && (intChoix < 0))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("\t\tSaisie invalide ! Réésayer : ");
+                strChoice = Console.ReadLine()!;
+                Console.ResetColor();
+            }
+            return intChoix;
+        }
     }
 }
