@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExosPOO
+namespace ExosPOOCompteBancaire
 {
     internal class IHM
     {

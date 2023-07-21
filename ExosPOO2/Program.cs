@@ -1,24 +1,15 @@
-﻿using ExosPOO;
-using System.Numerics;
+﻿using System.Numerics;
 using System.Reflection.Metadata;
 
-namespace ExosPOO2
+namespace ExosPOOCompteBancaire
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            //Init Liste de Salariés
-            List<Client> LstClient = new List<Client>()
-            {
-                new Client()
-            };
-            List<CompteBancaire> LstCopmtesBancaires = new List<CompteBancaire>()
-            {
-                //new CompteBancaire(),
-            };
+            // Init de la liste des comptes bancaires
+            List<CompteBancaire> LstCopmtesBancaires  = new List<CompteBancaire>();
 
-            // Sortie de la boucle quand Saisie du menu Quitter
             int intUserChoice1 = 0;
             do
             {
@@ -49,6 +40,12 @@ namespace ExosPOO2
                                 case 1: //Créer un compte courant 
                                     CompteCourant cptCourant = new CompteCourant();
                                     cptCourant.FillCompteBancaire();
+                                    char chrOperationYN = IHM.StartCreationOperation();
+                                    if (chrOperationYN == 'Y')
+                                    {
+                                        Operation operation = new Operation();
+                                        operation.FillOperation();
+                                    }
                                     break;
 
                                 case 2: //Créer un compte épargne

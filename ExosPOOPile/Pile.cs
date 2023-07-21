@@ -79,8 +79,8 @@ namespace ExosPOOPile
             {
                 for (int i = 0; i < this.NbElements; i++)
                 {
-                    if (this.Elements[i].ToString() == this.Elements[position].ToString())
-                        strTmp = this.Elements[i].ToString();
+                    if (this.Elements[i]!.ToString() == this.Elements[position]!.ToString())
+                        strTmp = this.Elements[i]!.ToString()!;
                 }
             }
             else

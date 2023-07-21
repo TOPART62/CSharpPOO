@@ -24,7 +24,7 @@ namespace ExosPOO
 
                 Console.Write("Combien d'abonnés ce forum aura-t-il ?  ");
                 Console.ForegroundColor = ConsoleColor.Blue;
-                string strNbAbonnesForum= Console.ReadLine()!;
+                string strNbAbonnesForum = Console.ReadLine()!;
                 Console.ResetColor();
                 int intNbAbonnesForum;
                 while (!int.TryParse(strNbAbonnesForum, out intNbAbonnesForum))
@@ -50,7 +50,7 @@ namespace ExosPOO
 
                 Console.Write("Ce forum aura-t-il un moderateur ?  Y or N ?  ");
                 Console.ForegroundColor = ConsoleColor.Blue;
-                string strYN = Console.ReadLine().ToUpper();
+                string strYN = Console.ReadLine()!.ToUpper();
                 Console.ResetColor();
                 char chrYN;
                 while (!char.TryParse(strYN, out chrYN) && (chrYN != 'Y') && (chrYN != 'N'))
@@ -63,7 +63,7 @@ namespace ExosPOO
                 return (strNomForum, intNbAbonnesForum, intNbNouvellesForum, chrYN);
             }
         }
-    
+
         public static (string strNomModerateur, string strPrenomModerateur, int intAgeModerateur) StartModerateur()
         {
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -174,3 +174,4 @@ namespace ExosPOO
             return (strPrenom, strNom, intAge);
         }
     }
+}

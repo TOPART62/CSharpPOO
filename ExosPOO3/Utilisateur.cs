@@ -10,13 +10,13 @@ namespace ExosPOO3
     internal class Utilisateur
     {
         // Attributd & Propriétés
-        private string _prenom;
-        private string _nom;
+        private string? _prenom;
+        private string? _nom;
         private int _age;
 
-        public string Prenom { get; set; }
-        public string Nom { get; set; }
-        public int Age { get; set; }
+        public string Prenom { get => _prenom; set => Prenom = value; }
+        public string Nom { get => _nom; set => Nom = value; }
+        public int Age { get => _age; set => Age = value; }
 
         // Constructeurs
         public Utilisateur(string prenom, string nom, int age)

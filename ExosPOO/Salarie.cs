@@ -85,8 +85,7 @@ namespace ExosPOO
         public Salarie RechercherEmploye(String name, List<Salarie> lstSalarie)
         {
             foreach (Salarie item in lstSalarie)
-                if (item.Nom.Contains(name))
-                    return item;
+                if (item.Nom.Contains(name)) return item;
             return null;
         }
         public virtual void FillEmploye()

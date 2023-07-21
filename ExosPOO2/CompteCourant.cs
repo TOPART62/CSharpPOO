@@ -4,13 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExosPOO2
+namespace ExosPOOCompteBancaire
 {
-    internal class CompteCourant : CompteBancaire   
+    internal class CompteCourant : CompteBancaire
     {
-        public virtual void CréerUnCompteBancaire()
+        public override void CréerUnCompteBancaire()
         {
-            base.CréerUnCompteBancaire();   
+            base.CréerUnCompteBancaire();
+        }
+        public override void AfficherCompteBancaire()
+        {
+            Console.WriteLine("=== Compte courant === ");
+            base.AfficherCompteBancaire();
+
         }
     }
 }

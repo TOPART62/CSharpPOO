@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExosPOO2
+namespace ExosPOOCompteBancaire
 {
     internal class Client
     {
@@ -15,10 +15,10 @@ namespace ExosPOO2
         private string? _tel;    
         private List<CompteBancaire>? _listComptesBancaires;
 
-        public int ID { get; set; } = 0;
-        public string Nom { get; set; } = "Nom Client par défaut";
-        public string Prenom { get; set; } = "Prénom Client par défaut";
-        public string Tel { get; set; } = "Téléphone Client par défaut";
+        public int ID { get => _id; set => ID = value; }
+        public string? Nom { get => _nom; set => Nom = value; }
+        public string? Prenom { get => _prenom; set => Prenom = value; }
+        public string? Tel { get => _tel; set => Tel = value; }
         public List<CompteBancaire>? ListComptesBancaires { get; set; }
 
     }
