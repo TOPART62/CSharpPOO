@@ -21,10 +21,11 @@ namespace ExosPOOCompteBancaire
                         break;
 
                     case 1: // Lister les comptes bancaires
-                        foreach (CompteBancaire cptBancaire in LstCopmtesBancaires)
-                        {
-                            cptBancaire.AfficherCompteBancaire();
-                        }
+                        if (LstCopmtesBancaires.Count > 0)
+                            foreach (CompteBancaire cptBancaire in LstCopmtesBancaires)
+                                cptBancaire.AfficherCompteBancaire();
+                        else
+                            Console.WriteLine("Pas de compte bancaire !!! ");
                         break;
 
                     case 2: // Créer un compte bancaire
@@ -39,13 +40,18 @@ namespace ExosPOOCompteBancaire
 
                                 case 1: //Créer un compte courant 
                                     CompteCourant cptCourant = new CompteCourant();
+                                    LstCopmtesBancaires.Add(cptCourant);
                                     cptCourant.FillCompteBancaire();
+                                    Console.WriteLine($"Le compte courant du client <{cptCourant.Client}> a été créé !!!");
                                     char chrOperationYN = IHM.StartCreationOperation();
                                     if (chrOperationYN == 'Y')
                                     {
                                         Operation operation = new Operation();
                                         operation.FillOperation();
+                                        if (cptCourant.Operations is not null)
+                                            cptCourant.Operations.Add(operation);
                                     }
+                                    Console.WriteLine($"Une operation sur le compte courant du client <{cptCourant.Client}> a été créé !!!");
                                     break;
 
                                 case 2: //Créer un compte épargne

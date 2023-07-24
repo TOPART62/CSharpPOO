@@ -8,19 +8,14 @@ namespace ExosPOOCompteBancaire
 {
     internal class Operation
     {
-        //COnst & Enum
-        const string Depot = "Dépot";
-        const string Retrait = "Retrait";
+        //Const & Enum
         public enum EnumStatut { Depot, Retrait }
 
         // Attributs et Propriétés
-        private int _idOperation;
-        private decimal _amount;
-        private EnumStatut _statut;
-
-        public int IdOperations { get => _idOperation; set => IdOperations = value; }
-        public decimal Amount { get => _amount; set => Amount = value; }
-        public EnumStatut Statut { get => _statut; set => Statut = value; }
+ 
+        public int IdOperations { get; set; }
+        public decimal Amount { get; set; }
+        public EnumStatut Statut { get; set;}
 
         //Méthodes
         public override string ToString()

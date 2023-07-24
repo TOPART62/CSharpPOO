@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,16 +11,19 @@ namespace ExosPOOCompteBancaire
     internal abstract class CompteBancaire
     {
         // Attributs & Propriétés
-        private decimal _solde;
-        private string? _client;
-        private List<Operation>? _operations;    
-        
-        public decimal Solde{ get => _solde; set => Solde = value; }
-        public string Client { get => _client!; set => Client = value; }
+       
+        public decimal Solde{ get; set; }
+        public string Client { get; set; }
         public List<Operation>? Operations { get; set; }
 
         //Constructeurs
-        public  CompteBancaire(decimal solde, string client, List<Operation>? operations)
+        public CompteBancaire()
+        {
+            Solde = 0;
+            Client = "Client par défaut";
+            Operations = new List<Operation>(); 
+        }
+        public CompteBancaire(decimal solde, string client, List<Operation>? operations)
         {
             Solde = solde;
             Client = client;

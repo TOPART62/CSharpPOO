@@ -14,8 +14,8 @@ namespace ExosPOO3
         private string? _nom;
         private int _age;
 
-        public string Prenom { get => _prenom; set => Prenom = value; }
-        public string Nom { get => _nom; set => Nom = value; }
+        public string Prenom { get => _prenom!; set => Prenom = value; }
+        public string Nom { get => _nom!; set => Nom = value; }
         public int Age { get => _age; set => Age = value; }
 
         // Constructeurs
